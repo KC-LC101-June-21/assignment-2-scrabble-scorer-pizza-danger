@@ -31,14 +31,24 @@ function oldScrabbleScorer(word) {
 
 // your job is to finish writing these functions and variables that we've named //
 // don't change the names or your program won't work as expected. //
+let word = "";
 
 function initialPrompt() {
-  console.log("Let's play some scrabble! Enter a word:");
+    word = input.question("Let's play some scrabble! Enter a word: ");
+  //console.log("Let's play some scrabble! Enter a word:"); -Original Code
+  return oldScrabbleScorer(word);
 };
+//console.log(initialPrompt(word));
 
-let simpleScore;
+let simpleScore = function(word) {
+  word = input.question("Let's play some scrabble! Enter a word: ");
+  word = word.length;
+  return word;
+  }
+console.log(`Simple Score: ${simpleScore(word)}`);
 
-let vowelBonusScore;
+let vowelBonusScore = function(word) {
+  wordScore = word.length.toUpperCase();
 
 let scrabbleScore;
 
