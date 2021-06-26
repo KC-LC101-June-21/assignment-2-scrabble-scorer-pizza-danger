@@ -34,38 +34,39 @@ function oldScrabbleScorer(word) {
 let word = "";
 
 function initialPrompt() {
-  word = input.question("Let's play some scrabble! Enter a word: ");
+  //word = input.question("Let's play some scrabble! Enter a word: ");
   //console.log("Let's play some scrabble! Enter a word:"); -Original Code
   return oldScrabbleScorer(word);
 };
-//console.log(initialPrompt(word));
-// const simplePoints = {
-//   1: []
-// }
+console.log(initialPrompt(word));
+
+const simplePointStruture = {
+  1: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+};
+
 let simpleScore = function(word) {
   word = input.question("Let's play some scrabble! Enter a word: ");
-  word = word.length;
-  return word;
-}
-console.log(`Simple Score: ${simpleScore(word)}`);
-
-let vowelBonusScore = function(word) {
-  word = input.question("Let's play some scrabble! Enter a word: ");
-  word = word.toUpperCase;
+  word = word.toUpperCase();
+  letterPoints = "";
   wordScore = 0;
-  let vowelScore = function(word) {
-    for (let i = 0; i < word.length; i++) {
-      if (word[i].includes('A', 'E', 'I', 'O', 'U')) {
-        // vowelsScore will hold the total number, here it is a string
-        // incremenet by 3 if the letter is a vowel
-        vowelScore += word[i] + 2;
-      } // else increment by 1
-      return vowelScore;
+  for (let i = 0; i < word.length; i++) {
+    for (const pointValue in simplePointStruture) {
+      if (simplePointStruture[pointValue].includes(word[i])) {
+        letterPoints += `\nPoints for '${word[i]}': ${pointValue}`
+        wordScore += Number(pointValue)
+      }
     }
   }
-  return wordScore = simpleScore(word) + vowelScore(word);
+  console.log(letterPoints);
+  return wordScore;
 }
-console.log(`Vowel Bonues Score: ${vowelBonusScore(word)}`);
+
+const simplePointStruture = {
+  1: ['B','C','D','F','G','H','J','K','L','M','N','P','Q','R','S','T','V','W','X','Y','Z']
+  3: ['A','E','I','O','U']
+};
+
+let vowelBonusScore;
 
 let scrabbleScore;
 
